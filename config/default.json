@@ -1,0 +1,7 @@
+{
+  "mongoURI": "mongodb://localhost:27017/test",
+  "users": {
+    "minPasswordLength": "5"
+  },
+  "jwtSecret": "1s3e5c6r7e9t"
+}
