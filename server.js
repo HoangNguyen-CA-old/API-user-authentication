@@ -3,13 +3,16 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const config = require('config');
 const app = express();
+const jwt = require('jsonwebtoken');
 
 app.use(express.json());
 app.use(morgan('dev'));
 
 const userRoute = require('./routes/api/users');
+const authRoute = require('./routes/api/auth');
 
 app.use('/users', userRoute);
+app.use('/auth', authRoute);
 
 app.use((req, res, next) => {
   const error = new Error('Route Not Found');
@@ -23,7 +26,11 @@ app.use((err, req, res, next) => {
 
 const db = config.get('mongoURI');
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log('connected to mongodb');
   })
