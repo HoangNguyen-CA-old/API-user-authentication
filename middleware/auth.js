@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = config.get('jwt').secret;
 
 //format of token:
-//authorization:bearer <token>
+//Authorization:Bearer <token>
 function auth(req, res, next) {
   const bearerHeader = req.header('authorization');
   const bearer = bearerHeader.split(' ');

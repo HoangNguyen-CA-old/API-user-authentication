@@ -5,7 +5,7 @@
     "minUsernameLength": "2"
   },
   "jwt": {
-    "secret": "1s3e5c6r7e9t",
+    "secret": "seeeeeccret",
     "expires": "3600"
   }
 }

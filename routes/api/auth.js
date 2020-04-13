@@ -10,6 +10,9 @@ const User = require('../../models/User');
 const jwtSecret = config.get('jwt').secret;
 const tokenExpiry = parseInt(config.get('jwt').expires);
 
+// @route post /api/auth
+// @desc attempts user login and sends back jwt
+// @access Public
 router.post('/', (req, res, next) => {
   const { email, password } = req.body;
 
@@ -48,6 +51,9 @@ router.post('/', (req, res, next) => {
   });
 });
 
+// @route get api/auth/
+// @desc user login, sends back jwt
+// @access Public
 router.get('/', authMW, (req, res, next) => {
   const user = req.user;
   User.findById(user.id)

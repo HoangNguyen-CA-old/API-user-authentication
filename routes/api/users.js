@@ -10,6 +10,9 @@ const jwtSecret = config.get('jwt').secret;
 const minPasswordLength = config.get('users').minPasswordLength;
 const minUsernameLength = config.get('users').minUsernameLength;
 
+// @route post api/users
+// @desc user registration, sends jwt to client
+// @access Public
 router.post(
   '/',
   [
